@@ -38,7 +38,7 @@ void light_off(){
                 ws.write(px.getBuf());
 }
 void light_color(int color){
-    ws.useII(WS2812::PER_PIXEL); //this may be required to change colors i dont know.
+    ws.useII(WS2812::PER_PIXEL); 
     for (int i = 0; i < WS2812_BUF; i++) { //change color for loop 
         px.Set(i, color);
     }
@@ -52,13 +52,12 @@ for (int i = 0; i < WS2812_BUF; i++) {
 }
 for (int j=0; j<WS2812_BUF; j++) {
     // px.SetI(pixel position, II value)
-    px.SetI(j%WS2812_BUF, 100); //the second value is the brightness i do not know the range, but 255 caused weird things to happen
-    //px.SetI(j%WS2812_BUF, 0xf+(0xf*(j%NUM_LEDS_PER_COLOR))); //previous code line before i replaced it with 100 
+    px.SetI(j%WS2812_BUF, 100); //the second value is the brightness 
 }
 // Now the buffer is written, rotate it
 // by writing it out with an increasing offset
 for (int z=WS2812_BUF; z >= 0 ; z--) {
-    ws.write_offsets(px.getBuf(),z,z,z); //this command does not like interrupts
+    ws.write_offsets(px.getBuf(),z,z,z); 
     wait(0.075);
 }
 
@@ -157,12 +156,11 @@ void reverse() {
 int main()
 {
     //LED CODE
-    ws.useII(WS2812::PER_PIXEL); //this may be required to change colors i dont know.
+    ws.useII(WS2812::PER_PIXEL); 
     for (int i = 0; i < WS2812_BUF; i++) { //change color for loop 
         px.Set(i, 0xff0000);
     }
   
-    //==    ==  ==  ==  ==  ==  ==  ==  ==  ==   ==  == ==  ==  ==  ==  ==  === ==  ==  ==  ==  ==
     char bnum=0;
     char bhit=0;
 
@@ -250,7 +248,7 @@ int main()
                         case '4': //number button 4
                             if (bhit=='1') {
                                 //add hit code here
-                                rainbow(); //HERE IS WHERE THE RAINBOW FUNCTION IS, IT IS THE DEFAULT LIGHT OPTION XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+                                rainbow(); 
                             } else {
                                 stop();
                             }
